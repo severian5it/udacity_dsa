@@ -30,7 +30,7 @@ def isTexting(texts, caller):
     for text in texts:
         sender = text[0]
         receiver = text[1]
-        if caller == sender or caller==receiver:
+        if caller == sender or caller == receiver:
             return True
     return False
 
