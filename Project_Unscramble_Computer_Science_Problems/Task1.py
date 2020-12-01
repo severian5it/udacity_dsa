@@ -29,10 +29,10 @@ def count_distinct_occurence(calls, texts):
     return len(number_set)
 
 
-nbr_telephones = count_distinct_occurence(calls, texts)
-print(f"There are {nbr_telephones} different telephone numbers in the records")
+if __name__ == '__main__':
+    nbr_telephones = count_distinct_occurence(calls, texts)
+    print(f"There are {nbr_telephones} different telephone numbers in the records")
 
-#O(k)+ O(n) and the set?
 
 
 

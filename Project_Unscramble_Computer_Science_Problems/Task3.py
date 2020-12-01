@@ -45,13 +45,6 @@ The percentage should have 2 decimal digits
 """
 
 
-def add_to_dict(area_code_calls, area_code):
-    if area_code_calls.get(area_code):
-        area_code_calls[area_code] += 1
-    else:
-        area_code_calls[area_code] = 1
-
-
 def extract_code(number):
     if number[0] == '(':
         first_bracket = number.find('(') +1
@@ -83,19 +76,20 @@ def calls_by_area_code(calls):
         receiver = call[1]
         if caller[0:5] == '(080)':
             prefix = extract_code(receiver)
-            add_to_dict(area_code_calls, prefix)
-            total_calls +=1
+            area_code_calls[prefix] = area_code_calls.get(prefix, 0) + 1
+            total_calls += 1
 
     return area_code_calls, total_calls
 
 
-print("The numbers called by people in Bangalore have codes:")
-for code in area_called(calls):
-    print(code)
+if __name__ == '__main__':
+    print("The numbers called by people in Bangalore have codes:")
+    for code in area_called(calls):
+        print(code)
 
-area_code_calls, totals_calls = calls_by_area_code(calls)
-print(f"{(float(area_code_calls['080'])/float(totals_calls)):.2f} percent of calls from fixed lines "
-      f"in Bangalore are calls "
-      f"to other fixed lines in Bangalore.")
+    area_code_calls, totals_calls = calls_by_area_code(calls)
+    print(f"{(float(area_code_calls['080'])/float(totals_calls)):.2f} percent of calls from fixed lines "
+          f"in Bangalore are calls "
+          f"to other fixed lines in Bangalore.")
 
 # 2N

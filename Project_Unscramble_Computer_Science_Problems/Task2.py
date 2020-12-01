@@ -21,21 +21,14 @@ September 2016.".
 """
 
 
-def add_to_dict(time_spent, number, duration):
-    if time_spent.get(number):
-        time_spent[number] += int(duration)
-    else:
-        time_spent[number] = int(duration)
-
-
 def time_spent_number(calls):
     time_spent = {}
     for call in calls:
         caller = call[0]
         receiver = call[1]
         duration = call[3]
-        add_to_dict(time_spent, caller, duration)
-        add_to_dict(time_spent, receiver, duration)
+        time_spent[caller] = time_spent.get(caller, 0) + int(duration)
+        time_spent[receiver] = time_spent.get(receiver, 0) + int(duration)
 
     return time_spent
 
@@ -50,11 +43,12 @@ def top_caller(time_spent_number):
     return top_duration, top_number
 
 
-time_spent_number = time_spent_number(calls)
-top_duration, top_number = top_caller(time_spent_number)
+if __name__ == '__main__':
+    time_spent_number = time_spent_number(calls)
+    top_duration, top_number = top_caller(time_spent_number)
 
-print(f"{top_number} spent the longest time, {top_duration} seconds, on the phone during "
-      f"September 2016.")
+    print(f"{top_number} spent the longest time, {top_duration} seconds, on the phone during "
+          f"September 2016.")
 
 # 2O(N)
 

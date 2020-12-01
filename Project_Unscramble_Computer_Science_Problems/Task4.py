@@ -26,36 +26,26 @@ The list of numbers should be print out one per line in lexicographic order with
 """
 
 
-def isTexting(texts, caller):
-    for text in texts:
-        sender = text[0]
-        receiver = text[1]
-        if caller == sender or caller == receiver:
-            return True
-    return False
+callers = {call[0] for call in calls}
+call_receivers = {call[1] for call in calls}
+texters = {text[0] for text in texts}
+text_receiver = {text[1] for text in texts}
+
+telemarketers = callers.difference(call_receivers)
+telemarketers = telemarketers.difference(texters)
+telemarketers = telemarketers.difference(text_receiver)
 
 
-def isReceivingCalls(calls, caller):
-    for receiver in calls[1]:
-        if receiver == caller:
-            True
-    return False
+if __name__ == '__main__':
+    print("These numbers could be telemarketers: ")
+    for telemarketer in telemarketers:
+        print(telemarketer)
+
+## difference is performed with O(n) complexity in the best cases
+## so it's N+N+N+N+N+N+N+N
+###But keep in mind that in worst cases (maximizing collisions with hashes) it can raise to O(n**2) (since lookup worst case is O(n): How is set() implemented?, but it seems that you can generally rely on O(1))
 
 
-def potential_telemarketers(calls, texts):
-    telemarketers = set()
-    for call in calls:
-        caller = call[0]
-        if not isTexting(texts, caller) and not isReceivingCalls(calls, caller):
-            telemarketers.add(caller)
-    return telemarketers
-
-telemarketers = potential_telemarketers(calls, texts)
-print("These numbers could be telemarketers: ")
-for telemarketer in telemarketers:
-    print(telemarketer)
-
-# 2O(N^2)
 
 
 
