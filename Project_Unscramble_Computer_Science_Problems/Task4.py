@@ -38,7 +38,8 @@ telemarketers = telemarketers.difference(text_receiver)
 
 if __name__ == '__main__':
     print("These numbers could be telemarketers: ")
-    for telemarketer in telemarketers:
+    telemarketers_sorted = sorted(telemarketers)
+    for telemarketer in telemarketers_sorted:
         print(telemarketer)
 
 ## difference is performed with O(n) complexity in the best cases

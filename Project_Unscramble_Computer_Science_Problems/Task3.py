@@ -47,7 +47,7 @@ The percentage should have 2 decimal digits
 
 def extract_code(number):
     if number[0] == '(':
-        first_bracket = number.find('(') +1
+        first_bracket = number.find('(') + 1
         second_bracket =  number.find(')')
         return number[first_bracket:second_bracket]
     elif number[0:3] != '140':
@@ -84,11 +84,12 @@ def calls_by_area_code(calls):
 
 if __name__ == '__main__':
     print("The numbers called by people in Bangalore have codes:")
-    for code in area_called(calls):
+    sorted_bangalore_calls = sorted(area_called(calls))
+    for code in sorted_bangalore_calls:
         print(code)
 
     area_code_calls, totals_calls = calls_by_area_code(calls)
-    print(f"{(float(area_code_calls['080'])/float(totals_calls)):.2f} percent of calls from fixed lines "
+    print(f"\n{(float(area_code_calls['080'])/float(totals_calls)):.2f} percent of calls from fixed lines "
           f"in Bangalore are calls "
           f"to other fixed lines in Bangalore.")
 
