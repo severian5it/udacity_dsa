@@ -25,7 +25,6 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
-
 callers = {call[0] for call in calls}
 call_receivers = {call[1] for call in calls}
 texters = {text[0] for text in texts}
@@ -41,14 +40,5 @@ if __name__ == '__main__':
     telemarketers_sorted = sorted(telemarketers)
     for telemarketer in telemarketers_sorted:
         print(telemarketer)
-
-## difference is performed with O(n) complexity in the best cases
-## so it's N+N+N+N+N+N+N+N
-###But keep in mind that in worst cases (maximizing collisions with hashes) it can raise to O(n**2) (since lookup worst case is O(n): How is set() implemented?, but it seems that you can generally rely on O(1))
-
-
-
-
-
 
 

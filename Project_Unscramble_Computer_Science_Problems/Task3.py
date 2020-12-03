@@ -46,6 +46,12 @@ The percentage should have 2 decimal digits
 
 
 def extract_code(number):
+    """extract area code from number.
+    Args:
+        number: number to analyze
+    Returns:
+        area code
+    """
     if number[0] == '(':
         first_bracket = number.find('(') + 1
         second_bracket =  number.find(')')
@@ -57,6 +63,12 @@ def extract_code(number):
 
 
 def area_called(calls):
+    """extract a set of area code from list of calls
+    Args:
+        calls: list of calls
+    Returns:
+        set of area codes
+    """
     area_code = set()
     for call in calls:
         caller = call[0]
@@ -69,6 +81,13 @@ def area_called(calls):
 
 
 def calls_by_area_code(calls):
+    """extract a set of area code from list of calls
+    Args:
+        calls: list of calls
+    Returns:
+        area_code_calls: dictionary with area code as key and duration as value.
+        total_calls: total number of calls from Bangalore Area.
+    """
     area_code_calls = {}
     total_calls = 0
     for call in calls:
@@ -84,7 +103,8 @@ def calls_by_area_code(calls):
 
 if __name__ == '__main__':
     print("The numbers called by people in Bangalore have codes:")
-    sorted_bangalore_calls = sorted(area_called(calls))
+    area_calls = area_called(calls)
+    sorted_bangalore_calls = sorted(area_calls)
     for code in sorted_bangalore_calls:
         print(code)
 
@@ -92,5 +112,3 @@ if __name__ == '__main__':
     print(f"\n{(float(area_code_calls['080'])/float(totals_calls)):.2f} percent of calls from fixed lines "
           f"in Bangalore are calls "
           f"to other fixed lines in Bangalore.")
-
-# 2N

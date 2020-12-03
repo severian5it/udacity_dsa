@@ -21,6 +21,13 @@ Print a message:
 
 
 def count_distinct_occurence(calls, texts):
+    """Return the count of distinct occurence of number
+    Args:
+        calls: list of calls
+        texts: list of texts
+    Returns:
+        number of distinct number
+    """
     number_set = set()
     for record in calls+texts:
         number_set.add(record[0])

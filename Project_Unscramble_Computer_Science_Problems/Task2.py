@@ -22,6 +22,12 @@ September 2016.".
 
 
 def time_spent_number(calls):
+    """Return a dictionary with time spent for each number.
+    Args:
+        calls: list of calls
+    Returns:
+        dictionary with time spent for each number
+    """
     time_spent = {}
     for call in calls:
         caller = call[0]
@@ -34,6 +40,13 @@ def time_spent_number(calls):
 
 
 def top_caller(time_spent_number):
+    """Return a dictionary with time spent for each number.
+    Args:
+        time_spent_number: dictionary with time spent for each number
+    Returns:
+        top_duration: longest duration
+        top_number: number with longest duration
+    """
     top_number = None
     top_duration = 0
     for number, duration in time_spent_number.items():

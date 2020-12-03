@@ -1,48 +1,64 @@
 # Worst Case Analyis
 Time complexity for basic operations in Python is coming from  [Python wiki: Time complexity](https://wiki.python.org/moin/TimeComplexity)
+In the pseudo code I didn't include the opening of the two files.
 ## Task0
 pseudo code for the implementation is as below:
 ```
-Open Call File.
-Open Text File.
-Access first Element Call.
-Access Last Element Texts.
+* Access first Element Call.
+* Access Last Element Texts.
 ```
 Getting an item at a specific index for a list is an operation of O(1) complexity, since a hash table
 under the hood is keeping track of position, therefore the worst case complexity is:
-
-2*O(1) --> O(1)
+```
+2O(1) --> O(1)
+```
 
 ## Task1
 pseudo code for the implementation is as below:
 ```
-Open Call File.
-Open Text File.
-for call in calls
-    if not in unique number
-        add it
-
-for text in Texts
-    if not in unique number
-        add it
-
+* Loop through all calls, add caller and receiver to set.
+* Loop through all text, add texter and receiver to set.
+* Print length of the set.
 ```
-A set is used to store unique numbers, a set is implemented as a hash table. So lookup/insert/delete 
-are O(1). and the set len is O(1),
-looping through the 2 files is O(k)+ O(n), if we assume having same length, worst case complexity is:
-2O(n)*O(1) + O(1) --> O(n)
+Ideal data structure is a `set` to store all those results.
+Worst case complexity will be:
+```
+O(N) + O(N) --> 2O(N) --> O(N)
+```
 
 
 ## Task2
 pseudo code for the implementation is as below:
 ```
-
+* Loop through all calls, populating a dictionary with key the number and value the duration
+* Loop through key, value pairs in dictionary, storing the highest duration and the key that spent
+the most time
+* print the results accessing the dictionary
 ```
+Ideal data structure is a `hashmap` to store all those results.
+Worst case complexity will be:
+```
+O(N) + O(N) + O(1) --> 2O(N) + O(1) --> O(N)
+```
+
 ## Task3
 pseudo code for the implementation is as below:
 ```
-
+* Loop through all calls: if they are from bangalore include in set of Caller.
+* Sort the result set
+* Loop through it and print it
+* Loop through all calls: if they are from bangalore include in dictionary with prefix as key and 
+raise the number of total calls.
+* access the dictionary with bangalore key and print it agains the total.
 ```
+
+Ideal data structure are a `set` to store the distinct prefix and a `hashmap` to store the number of
+calls by prefix.
+Worst case complexity will be:
+```
+O(N) + O(NLogN) + O(N) + O(N) + O(1) --> 2O(N) + O(NLogN) + O(1) --> O(NLogN)
+```
+
 ## Task4
 **Input:** list of calls and text.
 
@@ -50,13 +66,13 @@ pseudo code for the implementation is as below:
 
 pseudo code for the implementation is as below:
 ```
-* Create a Set of Caller.
-* Create a Set of Call Receiver.
-* Create a Set of Texter.
-* Create a Set of Text Receiver.
-* Remove from the Caller all Call Receiver.
-* Remove from the caller all Texter.
-* Remove from the caller all text receiver.
+* Loop through all calls to create a Set of Caller.
+* Loop through all calls to create a Set of Call Receiver.
+* Loop through all texts to create a Set of Texter.
+* Loop through all texts to create a Set of Text Receiver.
+* Remove from the Caller all Call Receiver via set difference.
+* Remove from the caller all Texter via set difference.
+* Remove from the caller all text receiver via set difference.
 * Sort the remaining caller.
 * Go through each remaining caller and print one by one.
 ```
