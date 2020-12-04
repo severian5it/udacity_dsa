@@ -109,6 +109,6 @@ if __name__ == '__main__':
         print(code)
 
     area_code_calls, totals_calls = calls_by_area_code(calls)
-    print(f"\n{(float(area_code_calls['080'])/float(totals_calls)):.2f} percent of calls from fixed lines "
+    print(f"\n{(float(area_code_calls['080'])/float(totals_calls))*100:.2f} percent of calls from fixed lines "
           f"in Bangalore are calls "
           f"to other fixed lines in Bangalore.")
