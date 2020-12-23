@@ -51,7 +51,7 @@ def keypad(num):
     out, _ = perm_key([], str(num))
     return out
 
-# Recursive Solution Udacity one, way easier
+# Recursive Solution Udacity one, way easier and it's great how handle digits
 def keypad(num):
     # Base case
     if num <= 1:
