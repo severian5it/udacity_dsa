@@ -41,14 +41,44 @@ class LinkedList:
 
         return size
 
+
 def union(llist_1, llist_2):
     # Your Solution Here
-    pass
+    linked_list_un = LinkedList()
+    node = llist_1.head
+    while node:
+        node_to_append = Node(node.value)
+        linked_list_un.append(node_to_append)
+        node = node.next
+
+    node = llist_2.head
+    while node:
+        node_to_append = Node(node.value)
+        linked_list_un.append(node_to_append)
+        node = node.next
+
+    return linked_list_un
+
+
 
 def intersection(llist_1, llist_2):
     # Your Solution Here
-    pass
+    in_first = set()
+    node = llist_1.head
+    while node:
+        in_first.add(node.value)
+        node = node.next
 
+    linked_list_in = LinkedList()
+
+    node = llist_2.head
+    while node:
+        if node.value in in_first:
+            node_to_append = Node(node.value)
+            linked_list_in.append(node_to_append)
+        node = node.next
+
+    return linked_list_in
 
 # Test case 1
 
@@ -81,5 +111,5 @@ for i in element_1:
 for i in element_2:
     linked_list_4.append(i)
 
-print(union(linked_list_3,linked_list_4))
-print(intersection(linked_list_3,linked_list_4))
+print(union(linked_list_3, linked_list_4))
+print(intersection(linked_list_3, linked_list_4))

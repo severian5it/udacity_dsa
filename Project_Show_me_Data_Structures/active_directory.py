@@ -50,10 +50,10 @@ def is_user_in_group(user, group):
         if is_user_in_group(user, g):
             is_in_subgroup = True
 
-
     return is_in_group or is_in_subgroup
 
 
 print(is_user_in_group(sub_child_user, parent))
 print(is_user_in_group(sub_child_user, child))
 print(is_user_in_group(sub_child_user, sub_child))
+print(is_user_in_group('Frodo', parent))
