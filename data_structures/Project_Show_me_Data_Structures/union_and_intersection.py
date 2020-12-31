@@ -63,6 +63,7 @@ def union(llist_1, llist_2):
 
     return linked_list_un
 
+
 def intersection(llist_1, llist_2):
     """Return Linked List union of two
     Args:
@@ -91,7 +92,7 @@ def intersection(llist_1, llist_2):
 
 
 if __name__ == "__main__":
-# Test case 1
+    # Test case 1
     linked_list_1 = LinkedList()
     linked_list_2 = LinkedList()
 
@@ -108,7 +109,6 @@ if __name__ == "__main__":
     print(f'intersection list is {intersection(linked_list_1,linked_list_2)}')
 
     # Test case 2
-
     linked_list_3 = LinkedList()
     linked_list_4 = LinkedList()
 
@@ -125,7 +125,6 @@ if __name__ == "__main__":
     print(f'intersection list is {intersection(linked_list_3, linked_list_4)}')
 
     # Test case 3
-
     linked_list_5 = LinkedList()
     linked_list_6 = LinkedList()
 
@@ -138,5 +137,21 @@ if __name__ == "__main__":
     for i in element_2:
         linked_list_6.append(i)
 
-    print(f'union list is {union(linked_list_5, linked_list_6)}')
-    print(f'intersection list is {intersection(linked_list_5, linked_list_6)}')
+    print(f'union list is {union(linked_list_5, linked_list_6)}')# expected list like list 1
+    print(f'intersection list is {intersection(linked_list_5, linked_list_6)}') # expected empty list
+
+    # Test case 4
+    linked_list_7 = LinkedList()
+    linked_list_8 = LinkedList()
+
+    element_1 = []
+    element_2 = []
+
+    for i in element_1:
+        linked_list_5.append(i)
+
+    for i in element_2:
+        linked_list_6.append(i)
+
+    print(f'union list is {union(linked_list_7, linked_list_8)}') # expected empty list
+    print(f'intersection list is {intersection(linked_list_7, linked_list_8)}')# expected empty list

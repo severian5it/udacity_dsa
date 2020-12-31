@@ -21,6 +21,22 @@ The problem is solved with the usage of 3 Data structure
 
 ## Blockchain
 
+Block-chain has been implemented by usage of a Linked List, where the *tail* is stored as an attribute, 
+and not the head, as it happens in a traditional Linked List.
+
+A new attribute has been added to the block to keep track of the previous block, since is not 
+possible to do the same with the hash. The Block-chain has same performance of a linked list, therefore:
+
+**Insert:** O(1) since is appended directly to the tail.
+
+**Delete:** O(N) traversing all the list.
+
+**Search:** O(N) traversing all the list.
+
+**Size:** O(N) traversing all the list.
+
+
+
 ## Union and Intersection
 
 The implementation of the two functions is based on a *linked list* and takes advantage of a *set* 
@@ -35,7 +51,7 @@ a set. the second is then traversed, and if the element is present in the set, g
 in the output linked list.
 Considering lookup into the set as O(1), for the low number of element, complexity is:
 ```
-O(N) + O(N)*O(1) --> O(2N)--> O(1)
+O(N) + O(N)*O(1) --> O(2N)--> O(N)
 ```
 
 
