@@ -170,8 +170,6 @@ def huffman_decoding(encoded_str, root):
 
 
 if __name__ == "__main__":
-    codes = {}
-
     # 1 Test Case string.
     a_great_sentence = "The bird is the word"
 
