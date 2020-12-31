@@ -9,6 +9,14 @@ The problem is solved with the usage of 2 Data structure
 
 ## File Recursion
 
+a Recursive function has been implemented using `os` module. Being the recursive nature, the complexity
+is:
+```
+O(N)
+```
+
+Being N the number of directory in the hierarchy.
+
 ## Huffman Coding
 
 The problem is solved with the usage of 3 Data structure
