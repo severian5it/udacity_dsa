@@ -1,11 +1,12 @@
 import hashlib
 import datetime
 
+
 def calc_hash(self, hash_str):
-      sha = hashlib.sha256()
-      hash_str = hash_str.encode('utf-8')
-      sha.update(hash_str)
-      return sha.hexdigest()
+    sha = hashlib.sha256()
+    hash_str = hash_str.encode('utf-8')
+    sha.update(hash_str)
+    return sha.hexdigest()
 
 class Block:
     def __init__(self, data):
@@ -13,6 +14,8 @@ class Block:
         self.data = data
         self.previous_hash = None
         self.hash = calc_hash(self, data)
+
+
 
 
 class BlockChain:
