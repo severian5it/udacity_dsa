@@ -44,6 +44,44 @@ The problem is solved with the usage of 3 Data structure
 * Priority Queue
 * Binary Tree
 
+the *Priority Queue* is re-implementation of the queue, adapted to the Node that are composing the binary
+Tree.
+When popping from the *Priority Queue*, all the queue is traversed to find the top priority element.
+The *Hashmap* with the frequency is created traversing the original sentence; The *Binary Tree* contains in 
+each node the Letter and the Priority.
+
+Let's analyse the complexity, breaking what happens in encoding/decoding phase.
+** Encoding:** following events are happening:
+* The sentence is traversed with O(N) complexity to form the Frequency Hashmap, Where n is the original lenght of the string. 
+* Frequency Hashmap is traversed with with O(k) complexity to generate Nodes that are inserted in Priority Queue, being k the 
+number of the letters
+* Nodes are popped out from the Priority Queues 2 by 2, to form new nodes. The complexity of this 
+phase is roughly O(2k*k) being k the number of nodes, hence the number of letter contained in the
+sentence.
+* the Binary Tree formed is searched N times, for each character of the string. Each Search has O(logk)
+complexity, being the tree binary, therefore the total complexity is O(Nlogk)
+
+The complexity of the function is:
+```
+O(N) + O(k) + O(2k^2) + O(Nlogk) --> O(N) + O(k^2) + O(Nlogk)
+```
+
+is clear that encoding complexity is complex function of the length of the string and of the number
+of characters, the latest being predominant for small sentence with many characters.
+
+** Decoding:** following events are happening:
+* The encoded sentence is traversed with at least O(N) complexity.
+* for each element we are moving through the binary tree, so at most with complexity O(logk). At most
+because the whole tree is traversed with many letters.
+* Decoded list is traversed to be returned as string
+
+The complexity of the function is:
+```
+O(N) + O(logk) + O(N) -> O(2N)
+```
+so length of string is predominant in this case.
+
+
 ## Active Directory
 
 The look up has been implemented via recursion, first is checked whether user is in current group,

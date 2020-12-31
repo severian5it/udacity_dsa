@@ -1,5 +1,6 @@
 import sys
 
+
 class PriorityQueue(object):
     def __init__(self):
         self.q = []
@@ -40,6 +41,7 @@ class PriorityQueue(object):
             return item
         else:
             return -1
+
 
 class Node(object):
     def __init__(self, value=None, letter= None):
@@ -92,23 +94,37 @@ class Node(object):
 
 
 def frequency_sentence(str):
+    """Return dictionary of frequence per letter
+    Args:
+        str: string
+    Returns:
+        frequency: dictionary of frequence per letter
+    """
     frequency = {}
     for s in str:
         frequency[s] = frequency.get(s, 0) + 1
     return frequency
 
 def path_from_root_to_node(root, letter):
-    """
-    Assuming data as input to find the node
-    The solution can be easily changed to find a node instead of data
-    :param data:
-    :return:
+    """Return path to specific letter
+     Args:
+         root: root node
+         letter: letter to find
+     Returns:
+         list: list of the path
     """
     output = path_from_node_to_root(root, letter)
     return list(reversed(output))
 
-# recursive solution
+
 def path_from_node_to_root(root, letter):
+    """Recursive formula to reach a node
+     Args:
+         root: root node
+         letter: letter to find
+     Returns:
+         list: list of the path
+    """
     if root is None:
         return None
 
@@ -126,7 +142,15 @@ def path_from_node_to_root(root, letter):
         return right_answer
     return None
 
+
 def huffman_encoding(sentence):
+    """Huffman encoding algorithm
+     Args:
+         sentence: string
+     Returns:
+         encoded_str: encoded sequence of 1 and 0
+         root: root Node for Huffman Binary Tree
+    """
     lett_freq = frequency_sentence(sentence)
     q_of_nodes = PriorityQueue()
     for letter, freq in lett_freq.items():
@@ -153,6 +177,13 @@ def huffman_encoding(sentence):
 
 
 def huffman_decoding(encoded_str, root):
+    """Huffman decoding algorithm
+     Args:
+         sentence: encoded string
+         root: root Node for Huffman Binary Tree
+     Returns:
+         decode_str: string decoded from the sequence
+    """
     decoded = []
     node = root
 
@@ -179,7 +210,7 @@ if __name__ == "__main__":
     encoded_data, tree = huffman_encoding(a_great_sentence)
 
     print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
-    print ("The content of the encoded data is: {}\n".format(encoded_data))
+    print ("The content of the encoded data is: {}\n".format(encoded_data)) # expecting 0110111011111100111000001010110000100011010011110111111010101011001010
 
     decoded_data = huffman_decoding(encoded_data, tree)
 
@@ -195,7 +226,7 @@ if __name__ == "__main__":
     encoded_data, tree = huffman_encoding(a_great_sentence)
 
     print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
-    print ("The content of the encoded data is: {}\n".format(encoded_data))
+    print ("The content of the encoded data is: {}\n".format(encoded_data)) # expecting 1010101010101000100100111111111111111000000010101010101
 
     decoded_data = huffman_decoding(encoded_data, tree)
 
@@ -211,7 +242,7 @@ if __name__ == "__main__":
     encoded_data, tree = huffman_encoding(a_great_sentence)
 
     print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
-    print ("The content of the encoded data is: {}\n".format(encoded_data))
+    print ("The content of the encoded data is: {}\n".format(encoded_data)) # 1010100100011111011111010100001011110011011110110010110111100001110100100110101000011
 
     decoded_data = huffman_decoding(encoded_data, tree)
 
@@ -229,5 +260,5 @@ if __name__ == "__main__":
 
     decoded_data = huffman_decoding(encoded_data, tree)
 
-    print ("The content of the decoded data is: {}\n".format(decoded_data))
+    print ("The content of the decoded data is: {}\n".format(decoded_data)) # expecting empty result
 
