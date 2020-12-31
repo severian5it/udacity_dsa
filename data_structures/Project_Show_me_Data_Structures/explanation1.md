@@ -2,10 +2,29 @@
 
 ## LRU Cache
 
-The problem is solved with the usage of 2 Data structure
+The problem is solved with the usage of 2 Data structure.
 
-* List
-* Double Linked List
+* Python Dictionary.
+* Double Linked List.
+
+It could have been possible use *a hash function* and a *bucketed list* in place of the dictionary, 
+however I used the last one for the sake of simplicity.
+
+The *Double Linked List* allows to keep track of the least recent used element, and to evict it, when 
+The capacity is exhausted, this because that element is always at the head, while the most recent 
+used is always moved at the tail.
+
+The Double Linked List is created with a tail and a head node already in place, this made me implement
+the algorithm without taking care of situation in which head and tail were the same or were None.
+
+The complexity of this implementation is the following:
+
+**Get:** O(1) to retrieve from dictionary and O(1) to move it to the end of the DLL, therefore `O(1)`.
+
+**Set:** O(1) to put it in the dictionary, O(1) to move it to the end of the DLL and, in case capacity
+is a above the limit, O(1)  to evict the least recently used element. In total is `O(1)`.
+
+
 
 ## File Recursion
 
@@ -45,13 +64,13 @@ and not the head, as it happens in a traditional Linked List.
 A new attribute has been added to the block to keep track of the previous block, since is not 
 possible to do the same with the hash. The Block-chain has same performance of a linked list, therefore:
 
-**Insert:** O(1) since is appended directly to the tail.
+**Insert:** `O(1)` since is appended directly to the tail.
 
-**Delete:** O(N) traversing all the list.
+**Delete:** `O(N)` traversing all the list.
 
-**Search:** O(N) traversing all the list.
+**Search:** `O(N)` traversing all the list.
 
-**Size:** O(N) traversing all the list.
+**Size:** `O(N)` traversing all the list.
 
 
 

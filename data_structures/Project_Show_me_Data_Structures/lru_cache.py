@@ -1,4 +1,4 @@
-class Node():
+class Node(object):
     def __init__(self, node_key, val):
         self.node_key = node_key
         self.val = val
@@ -6,7 +6,7 @@ class Node():
         self.prev = None
 
 
-class LRU_Cache():
+class LRU_Cache(object):
     def __init__(self, max_size=5):
         self.head = Node('head', 'head')
         self.tail = Node('tail', 'tail')
@@ -17,12 +17,14 @@ class LRU_Cache():
         self.node_lookup = {}
 
     def remove_node(self, node):
+        """ Remove Node """
         node_after = node.next
         node_before = node.prev
         node_before.next = node_after
         node_after.prev = node_before
 
     def move_to_end(self, node):
+        """ Move a Node before the tail """
         prev_node_tail = self.tail.prev
         prev_node_tail.next = node
         node.prev = prev_node_tail
@@ -30,10 +32,11 @@ class LRU_Cache():
         self.tail.prev = node
 
     def get(self, key):
+        """ Cache get """
         if key not in self.node_lookup:
             # cache miss
             return -1
-        # cache it
+        # cache hit
         node = self.node_lookup[key]
         node_val = node.val
         self.remove_node(node)
@@ -41,7 +44,9 @@ class LRU_Cache():
         return node_val
 
     def set(self, key, val):
+        """ Cache set """
         if key in self.node_lookup:
+            # is in Cache, move it to the end.
             node = self.node_lookup[key]
             node.val = val
             self.remove_node(node)
@@ -58,20 +63,25 @@ class LRU_Cache():
             self.move_to_end(new_node)
             self.curr_size += 1
 
-our_cache = LRU_Cache(5)
 
-our_cache.set(1, 1);
-our_cache.set(2, 2);
-our_cache.set(3, 3);
-our_cache.set(4, 4);
+if __name__ == "__main__":
+    our_cache = LRU_Cache(5)
 
+    our_cache.set(1, 1);
+    our_cache.set(2, 2);
+    our_cache.set(3, 3);
+    our_cache.set(4, 4);
 
-print(our_cache.get(1))       # returns 1
-print(our_cache.get(2))   # returns 2
-print(our_cache.get(9))  # returns -1 because 9 is not present in the cache
+    # Test1  cache hit
+    print(f"cache returns {our_cache.get(1)}")  # returns 1
+    # Test2  cache hit
+    print(f"cache returns {our_cache.get(2)}")  # returns 2
+    # Test3  cache miss
+    print(f"cache returns {our_cache.get(9)}")  # returns -1 because 9 is not present in the cache
 
-our_cache.set(5, 5)
-our_cache.set(6, 6)
+    our_cache.set(5, 5)
+    our_cache.set(6, 6)
 
-print(our_cache.get(3)) # returns -1 because the cache reached it's capacity and 3 was the least recently used entry
+    # Test4  cache miss because 3 has been evicted.
+    print(f"cache returns {our_cache.get(3)}") # returns -1 because the cache reached it's capacity and 3 was the least recently used entry
 
