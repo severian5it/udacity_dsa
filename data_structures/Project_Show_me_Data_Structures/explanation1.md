@@ -19,6 +19,16 @@ The problem is solved with the usage of 3 Data structure
 
 ## Active Directory
 
+The look up has been implemented via recursion, first is checked whether user is in current group,
+then the function is called recursively on groups belonging to the parent group.
+The complexity is therefore at worst case:
+```
+O(N)
+```
+
+Being N the number of groups in the hierarchy.
+
+
 ## Blockchain
 
 Block-chain has been implemented by usage of a Linked List, where the *tail* is stored as an attribute, 
@@ -41,6 +51,7 @@ possible to do the same with the hash. The Block-chain has same performance of a
 
 The implementation of the two functions is based on a *linked list* and takes advantage of a *set* 
 in the case of intersection. 
+
 **union:** the first Linked List is traversed till the end, and each element is inserted in the new 
  output, then the second is traversed and the new elements gets inserted, therefore it has complexity: 
 ```

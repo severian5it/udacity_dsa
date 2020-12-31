@@ -20,21 +20,9 @@ class Group(object):
         return self.name
 
 
-parent = Group("parent")
-child = Group("child")
-sub_child = Group("subchild")
-
-sub_child_user = "sub_child_user"
-sub_child.add_user(sub_child_user)
-
-child.add_group(sub_child)
-parent.add_group(child)
-
-
 def is_user_in_group(user, group):
     """
     Return True if user is in the group, False otherwise.
-
     Args:
       user(str): user name/id
       group(class:Group): group to check user membership against
@@ -53,7 +41,21 @@ def is_user_in_group(user, group):
     return is_in_group or is_in_subgroup
 
 
-print(is_user_in_group(sub_child_user, parent))
-print(is_user_in_group(sub_child_user, child))
-print(is_user_in_group(sub_child_user, sub_child))
-print(is_user_in_group('Frodo', parent))
+if __name__ == "__main__":
+    parent = Group("parent")
+    child = Group("child")
+    sub_child = Group("subchild")
+
+    sub_child_user = "sub_child_user"
+    sub_child.add_user(sub_child_user)
+
+    child.add_group(sub_child)
+    parent.add_group(child)
+    # Test Case1
+    print(f"is sub child user in parent group? {is_user_in_group(sub_child_user, parent)}") # expected True
+    # Test Case2
+    print(f"is sub child user in child group? {is_user_in_group(sub_child_user, child)}")  # expected True
+    # Test Case3
+    print(f"is sub child user in sub child group? {is_user_in_group(sub_child_user, sub_child)}")  # expected True
+    # Test Case4
+    print(f"is sub child user2 in sub child group? {is_user_in_group('sub_child_user2', parent)}")  # expected False
