@@ -85,3 +85,12 @@ if __name__ == "__main__":
     # Test4  cache miss because 3 has been evicted.
     print(f"cache returns {our_cache.get(3)}") # returns -1 because the cache reached it's capacity and 3 was the least recently used entry
 
+    # Test5 set and get None
+    our_cache.set(None, 6)
+    print(f"cache returns {our_cache.get(None)}") # expecting None to be handled as key
+
+    # Test5 set and get 0
+    our_cache.set(0, 100)
+    print(f"cache returns {our_cache.get(0)}")  # expecting 0 to be handled as key
+
+

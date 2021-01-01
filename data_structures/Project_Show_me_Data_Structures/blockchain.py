@@ -69,15 +69,21 @@ class BlockChain(object):
         """ Remove first occurrence of value. """
         current_block = self.tail
         if current_block.data == data:
+            print('remove from tail')
             self.tail = current_block.prev
         else:
+            print('here')
             while current_block:
+                print(current_block, current_block.prev)
                 if current_block is None:
+                    print('herenone')
                     return
-                elif current_block.prev.data == data:
+                elif current_block.data == data:
+                    print('hereis')
                     current_block.prev = current_block.prev.prev
                     return
                 else:
+                    print('hereprev')
                     current_block = current_block.prev
 
 
@@ -102,3 +108,11 @@ if __name__ == "__main__":
     # Test4 BlockChain remove
     BlockChain.remove('BTC 0.3')
     print(BlockChain.size())
+
+    # Test5 BlockChain remove None
+    print(BlockChain)
+    BlockChain.remove(None) # expected to not remove anythin
+    print(BlockChain.size())
+
+    # Test6 BlockChain search None
+    print(BlockChain.search(None)) # should return None
