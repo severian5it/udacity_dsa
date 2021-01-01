@@ -59,3 +59,8 @@ if __name__ == "__main__":
     print(f"is sub child user in sub child group? {is_user_in_group(sub_child_user, sub_child)}")  # expected True
     # Test Case4
     print(f"is sub child user2 in sub child group? {is_user_in_group('sub_child_user2', parent)}")  # expected False
+    # Test Case6 child empty
+    print(f"is empty string in sub child group? {is_user_in_group('', parent)}")  # expected False
+    # Test Case7 child None
+    print(
+        f"is Nonein sub child group? {is_user_in_group(None, parent)}")  # expected False

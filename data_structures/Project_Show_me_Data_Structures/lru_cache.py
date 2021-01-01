@@ -89,8 +89,16 @@ if __name__ == "__main__":
     our_cache.set(None, 6)
     print(f"cache returns {our_cache.get(None)}") # expecting None to be handled as key
 
-    # Test5 set and get 0
+    # Test6 set and get 0
     our_cache.set(0, 100)
     print(f"cache returns {our_cache.get(0)}")  # expecting 0 to be handled as key
+
+    # Test7 set and get really high number
+    our_cache.set(4, 100000000)
+    print(f"cache returns {our_cache.get(4)}") # expecting 100000000 to be returned
+
+    # Test7 set and get negative number
+    our_cache.set(4, -100000000)
+    print(f"cache returns {our_cache.get(4)}") # expecting 100000000 to be returned
 
 
