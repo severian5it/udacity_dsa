@@ -32,7 +32,7 @@ print('pivot index %d' % pivot_index)
 def sort_all(items, begin_index, end_index):
     if end_index <= begin_index:
         return
-
+    # please note sorting is in place! So less space complexity.
     pivot_index = sort_a_little_bit(items, begin_index, end_index)
     sort_all(items, begin_index, pivot_index - 1)
     sort_all(items, pivot_index + 1, end_index)
