@@ -1,3 +1,4 @@
+# this is the most efficient subarray sum in O(N), and is limit the space complexity
 def maxCrossingSum(arr, start, mid_idx, stop):
     mid_idx_val = arr[mid_idx]
     len_arr = len(arr)
