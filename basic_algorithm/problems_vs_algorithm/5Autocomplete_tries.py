@@ -11,12 +11,15 @@ class TrieNode(object):
     def suffixes(self):
         ## Recursive function that collects the suffix for
         ## all complete words below this point
-        suffix_list = self._suffixes_rec( '', [])
+        suffix_list = self._suffixes_rec('', [])
         return suffix_list
 
     def _suffixes_rec(self, suffix='', suffix_list=[]):
         if self.is_word and suffix:
-            return suffix_list.append(suffix)
+            suffix_list.append(suffix)
+
+        if not self.children:
+            return suffix_list
 
         for k,v in self.children.items():
             v._suffixes_rec(suffix + k, suffix_list)
@@ -73,6 +76,8 @@ for word in wordList:
 MyTrie.find_suffixes('ant')
 MyTrie.find_suffixes('fun')
 MyTrie.find_suffixes('tri')
+MyTrie.find_suffixes('an')
+MyTrie.find_suffixes('t')
 MyTrie.find_suffixes('')
 MyTrie.find_suffixes(None)
 MyTrie.find_suffixes('stogatto')
