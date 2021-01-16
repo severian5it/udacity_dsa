@@ -6,16 +6,20 @@ def binary_search_recursive_soln(array, target, start_index, end_index):
     mid_element = array[mid_index]
     first_element = array[start_index]
     last_element = array[end_index]
-    print(f"mid element is {mid_element}, first element is {first_element}, array is {array}, target is {target}")
+
     if mid_element == target:
         return mid_index
     elif first_element == target:
         return start_index
     elif last_element == target:
         return end_index
-    elif target > last_element and target > first_element:
+    elif mid_element > target > first_element:
         return binary_search_recursive_soln(array, target, start_index, mid_index - 1)
-    else:
+    elif mid_element < target < last_element:
+        return binary_search_recursive_soln(array, target, mid_index + 1, end_index)
+    elif mid_element < target > last_element:
+        return binary_search_recursive_soln(array, target, start_index, mid_index - 1)
+    elif mid_element > target < last_element:
         return binary_search_recursive_soln(array, target, mid_index + 1, end_index)
 
 
@@ -30,14 +34,26 @@ def binary_search_recursive(array, target):
       int: the index of the target, if found, in the source
       -1: if the target is not found
     '''
+
     return binary_search_recursive_soln(array, target, 0, len(array) - 1)
 
 
 def rotated_array_search(input_list, number):
+    if len(input_list) == 0:
+        return 'empty array'
+
+    if number is None:
+        return 'please specify Target'
+
     return binary_search_recursive(input_list, number)
 
 
 def linear_search(input_list, number):
+    if len(input_list) == 0:
+        return 'empty array'
+
+    if number is None:
+        return 'please specify Target'
     for index, element in enumerate(input_list):
         if element == number:
             return index
@@ -57,3 +73,5 @@ test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 8])
 test_function([[6, 7, 8, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])
+test_function([[6, 7, 8, 1, 2, 3, 4], None])
+test_function([[], 10])
