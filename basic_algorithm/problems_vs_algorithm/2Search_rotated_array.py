@@ -1,13 +1,41 @@
-def rotated_array_search(input_list, number):
-    """
-    Find the index by searching in a rotated sorted array
+def binary_search_recursive_soln(array, target, start_index, end_index):
+    if start_index > end_index:
+        return -1
 
-    Args:
-       input_list(array), number(int): Input array to search and the target
-    Returns:
-       int: Index or -1
-    """
-   pass
+    mid_index = (start_index + end_index) // 2
+    mid_element = array[mid_index]
+    first_element = array[start_index]
+    last_element = array[end_index]
+    print(f"mid element is {mid_element}, first element is {first_element}, array is {array}, target is {target}")
+    if mid_element == target:
+        return mid_index
+    elif first_element == target:
+        return start_index
+    elif last_element == target:
+        return end_index
+    elif target > last_element and target > first_element:
+        return binary_search_recursive_soln(array, target, start_index, mid_index - 1)
+    else:
+        return binary_search_recursive_soln(array, target, mid_index + 1, end_index)
+
+
+def binary_search_recursive(array, target):
+    '''Write a function that implements the binary search algorithm using recursion
+
+    args:
+      array: a sorted array of items of the same type
+      target: the element you're searching for
+
+    returns:
+      int: the index of the target, if found, in the source
+      -1: if the target is not found
+    '''
+    return binary_search_recursive_soln(array, target, 0, len(array) - 1)
+
+
+def rotated_array_search(input_list, number):
+    return binary_search_recursive(input_list, number)
+
 
 def linear_search(input_list, number):
     for index, element in enumerate(input_list):
@@ -18,6 +46,7 @@ def linear_search(input_list, number):
 def test_function(test_case):
     input_list = test_case[0]
     number = test_case[1]
+    print(linear_search(input_list, number), rotated_array_search(input_list, number))
     if linear_search(input_list, number) == rotated_array_search(input_list, number):
         print("Pass")
     else:

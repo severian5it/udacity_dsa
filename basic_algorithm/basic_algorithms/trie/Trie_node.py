@@ -36,7 +36,7 @@ class Trie(object):
         return current_node.is_word
 
 
-word_list = ['apple', 'bear', 'goo', 'good', 'goodbye', 'goods', 'goodwill', 'gooses'  ,'zebra']
+word_list = ['apple', 'bear', 'goo', 'good', 'goodbye', 'goods', 'goodwill', 'gooses' ,'zebra']
 word_trie = Trie()
 
 # Add words
