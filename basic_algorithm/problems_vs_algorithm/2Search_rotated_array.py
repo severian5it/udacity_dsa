@@ -1,4 +1,14 @@
 def binary_search_recursive_soln(array, target, start_index, end_index):
+    ''' recursive search taking into account of the rotation
+    args:
+      array: a sorted array of items of the same type
+      target: the element you're searching for
+      start_index: start index of the portion of the array you search
+      end_index: end index of the portion of the array you search
+    returns:
+      int: the index of the target, if found, in the source
+       -1: if the target is not found
+    '''
     if start_index > end_index:
         return -1
 
@@ -24,8 +34,7 @@ def binary_search_recursive_soln(array, target, start_index, end_index):
 
 
 def binary_search_recursive(array, target):
-    '''Write a function that implements the binary search algorithm using recursion
-
+    ''' facing function for binary search
     args:
       array: a sorted array of items of the same type
       target: the element you're searching for
@@ -49,6 +58,15 @@ def rotated_array_search(input_list, number):
 
 
 def linear_search(input_list, number):
+    '''  linear search in O(n) time, used for testing
+    args:
+      input_list: a sorted array of items of the same type
+      number: the element you're searching for
+
+    returns:
+      int: the index of the target, if found, in the source
+      -1: if the target is not found
+    '''
     if len(input_list) == 0:
         return 'empty array'
 
@@ -73,5 +91,7 @@ test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 8])
 test_function([[6, 7, 8, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])
+
+# Edge and corner cases
 test_function([[6, 7, 8, 1, 2, 3, 4], None])
 test_function([[], 10])
