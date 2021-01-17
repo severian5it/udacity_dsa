@@ -1,4 +1,12 @@
 def mergesort(items):
+    """
+    Split array in  2 array and returned a merged one via recursion.
+
+    Args:
+       items: array to sort
+    Returns:
+       sorted array
+    """
     if len(items) <= 1:
         return items
 
@@ -13,6 +21,15 @@ def mergesort(items):
 
 
 def merge(left, right):
+    """
+    Merge 2 array  into a sorted one.
+
+    Args:
+       left: array to sort
+       right: array to sort
+    Returns:
+       merged sorted array
+    """
     merged = []
     left_index = 0
     right_index = 0
@@ -71,7 +88,7 @@ test_function([[4, 6, 2, 5, 9, 8], [964, 852]])
 test_function([[2, 1, 9, 7, 8], [971, 82]])
 test_function([[1, 3], [3, 1]])
 
-
+# Edge and corner cases
 print(rearrange_digits(None))
 print(rearrange_digits([]))
 print(rearrange_digits([1]))
