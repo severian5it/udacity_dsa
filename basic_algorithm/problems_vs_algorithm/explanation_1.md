@@ -61,5 +61,6 @@ Also router problem used tre Trie, as explained in the course, and all the inser
 at `O(N)` complexity, where N is the number of element composing a path.
 
 The Look-up operation was implemented via recursion, traversing all the nodes at  `O(N)` *Time complexity*,
-while the space complexity is equals to `O(1)`, since no additional objects are created.
+while the space complexity is equals to `O(N)`, since the usage of an array object to hold the split 
+element of the Path.
 
