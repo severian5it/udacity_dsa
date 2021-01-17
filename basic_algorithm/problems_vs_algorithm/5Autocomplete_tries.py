@@ -1,20 +1,18 @@
-## Represents a single node in the Trie
 class TrieNode(object):
     def __init__(self):
         self.is_word = False
         self.children = {}
 
     def insert(self, node, char):
-        ## Add a child node in this Trie
         self.children[char] = node
 
     def suffixes(self):
-        ## Recursive function that collects the suffix for
-        ## all complete words below this point
+        # face function
         suffix_list = self._suffixes_rec('', [])
         return suffix_list
 
     def _suffixes_rec(self, suffix='', suffix_list=[]):
+        # recursive function to find suffices
         if self.is_word and suffix:
             suffix_list.append(suffix)
 
@@ -29,9 +27,8 @@ class Trie(object):
     def __init__(self):
         self.root = TrieNode()
 
-    ## Initialize this Trie (add a root node)
-
     def insert(self, word):
+        # insert word in trie
         current_node = self.root
         for char in word:
             if char not in current_node.children:
@@ -43,6 +40,7 @@ class Trie(object):
         current_node.is_word = True
 
     def find(self, prefix):
+        # find prefix in trie
         current_node = self.root
 
         for char in prefix:
@@ -52,7 +50,8 @@ class Trie(object):
             current_node = current_node.children[char]
         return current_node
 
-    def find_suffixes(self, prefix=''):
+    def find_suffices(self, prefix=''):
+        # find suffices
         if not prefix:
             print('please specify a prefix')
             return
@@ -73,14 +72,16 @@ wordList = [
 for word in wordList:
     MyTrie.insert(word)
 
-MyTrie.find_suffixes('ant')
-MyTrie.find_suffixes('fun')
-MyTrie.find_suffixes('tri')
-MyTrie.find_suffixes('an')
-MyTrie.find_suffixes('t')
-MyTrie.find_suffixes('')
-MyTrie.find_suffixes(None)
-MyTrie.find_suffixes('stogatto')
+MyTrie.find_suffices('ant')
+MyTrie.find_suffices('fun')
+MyTrie.find_suffices('tri')
+MyTrie.find_suffices('an')
+MyTrie.find_suffices('t')
+
+# Edge case
+MyTrie.find_suffices('')
+MyTrie.find_suffices(None)
+MyTrie.find_suffices('stogatto')
 
 
 
