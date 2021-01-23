@@ -16,10 +16,10 @@ def sort_012(input_list):
             final_index -= 1
         elif input_list[front_index] == 0:
             del input_list[front_index]
-            input_list.insert(0,0)
-            front_index +=1
+            input_list.insert(0, 0)
+            front_index += 1
         else:
-            front_index +=1
+            front_index += 1
     return input_list
 
 

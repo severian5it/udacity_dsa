@@ -16,7 +16,7 @@ bubble_sort_1(wakeup_times)
 print ("Pass" if (wakeup_times[0] == 3) else "Fail")
 
 # Entries are (h, m) where h is the hour and m is the minute
-sleep_times = [(24,13), (21,55), (23,20), (22,5), (24,23), (21,58), (24,3)]
+sleep_times = [(24, 13), (21, 55), (23, 20), (22,5), (24,23), (21,58), (24,3)]
 
 def bubble_sort_2(l):
     # TODO: Implement bubble sort solution
