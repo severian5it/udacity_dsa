@@ -38,4 +38,4 @@ def equation_checker(equation):
 
 
 print("Pass" if (equation_checker('((3^2 + 8)*(5/2))/(2+6)')) else "Fail")
-print("Pass" if not (equation_checker('((3^2 + 8)*(5/2))/(2+6))')) else "Fail"
+print("Pass" if not (equation_checker('((3^2 + 8)*(5/2))/(2+6))')) else "Fail")
