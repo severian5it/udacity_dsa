@@ -1,5 +1,8 @@
+#!/usr/bin/env python3
+
 import math
 import heapq
+from helper import load_map
 
 
 def distance(x, y):
@@ -67,3 +70,8 @@ def shortest_path(M, start, goal):
                 prev_node[next] = current
 
     return build_path(prev_node, start, goal)
+
+# test maps
+map_40 = load_map("map-40.pickle")
+# example 1
+shortest_path(map_40, 8, 24)  # path: [8, 14, 16, 37, 12, 17, 10, 24]
