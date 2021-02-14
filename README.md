@@ -27,7 +27,7 @@ is useful and
 * A*
 
 
-## useful links
+### useful links
 
 [Big O Cheat Sheet](https://www.bigocheatsheet.com/)
 [Python Time Complexity](https://wiki.python.org/moin/TimeComplexity)
